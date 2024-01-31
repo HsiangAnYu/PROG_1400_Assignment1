@@ -1,11 +1,14 @@
 public class Team {
-    String name;
+    //all variable
+    String name = "";
     String stars;
     int totalGoals;
     int totalAssists;
     double budget = Math.random()*100000;
+    Player[] players;
 
-    public void Team(String n){
+    //constructor
+    public Team(String n){
         this.name = n;
     }
 
