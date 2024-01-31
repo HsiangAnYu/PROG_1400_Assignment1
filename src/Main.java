@@ -1,4 +1,5 @@
 import javax.swing.plaf.IconUIResource;
+import java.sql.SQLOutput;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class Main {
             teamsArray[i] = new Team(sc.next());
             if(teamsArray[i].name.length() < 3)
             {
-                System.out.println("Need at least 3 characters");
+                System.out.println("Name need at least 3 characters");
                 i --;
             }
         }
@@ -30,7 +31,37 @@ public class Main {
         System.out.println("\nPLAYER ENTRY");
         System.out.println("================================");
 
+        for(int i = 0; i < teamsArray.length; i++)
+        {
+            String tempName;
+            int tempGoal;
+            int tempAssist;
 
+            System.out.println("Enter players for "+ teamsArray[i].name +" Picks:");
+
+            for(int p = 0; p < playerArray.length; p++)
+            {
+                do{
+                    System.out.println("Enter name for player # " + (p+1) +":");
+                    tempName = sc.next();
+                }while(tempName.length() < 3);
+
+                do{
+                    System.out.println("Enter number of goals for " + tempName);
+                    tempGoal = sc.nextInt();
+                }while(tempGoal < 0);
+
+                do{
+                    System.out.println("Enter number of assists for " + tempName);
+                    tempAssist = sc.nextInt();
+                }while(tempAssist < 0);
+
+                playerArray[p] = new Player(tempName,tempGoal,tempAssist);
+            }
+            teamsArray[i].players = playerArray;
+        }
+
+        System.out.println(teamsArray[1].players[1].name + teamsArray[1].players[1].goals + teamsArray[1].players[1].assists);
 
     }
 }

@@ -5,7 +5,7 @@ public class Team {
     int totalGoals;
     int totalAssists;
     double budget = Math.random()*100000;
-    Player[] players;
+    Player[] players = new Player[3];
 
     //constructor
     public Team(String n){
