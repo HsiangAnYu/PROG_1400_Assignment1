@@ -20,6 +20,7 @@ public class Main {
         {
             System.out.println("Enter name for team # " + (i+1) + ":");
             teamsArray[i] = new Team(sc.next());
+            //validation for team name.
             if(teamsArray[i].getName().length() < 3)
             {
                 System.out.println("Name need at least 3 characters");
@@ -31,8 +32,9 @@ public class Main {
         System.out.println("\nPLAYER ENTRY");
         System.out.println("================================");
 
+        //loop for player data input
         for(int i = 0; i < teamsArray.length; i++)
-        {
+        {   //temp variable for player class
             String tempName;
             int tempGoal;
             int tempAssist;
@@ -41,15 +43,17 @@ public class Main {
 
             for(int p = 0; p < playerArray.length; p++)
             {
+                //store player name with validation
                 do{
                     System.out.println("Enter name for player # " + (p+1) +":");
                     tempName = sc.next();
                     if(tempName.length() < 3){ System.out.println("Name need at least 3 characters");}
                 }while(tempName.length() < 3);
 
+                //store player goals with validation
                 do{
                     System.out.println("Enter number of goals for " + tempName);
-                    //
+                    //detect rather input is int or not.
                     while (!sc.hasNextInt()) {
                         System.out.println("Input need to be a number!");
                         System.out.println("Enter number of goals for " + tempName);
@@ -59,8 +63,10 @@ public class Main {
                     if(tempGoal < 0){ System.out.println("Goal need to be positive number");}
                 }while(tempGoal < 0);
 
+                //store player assist with validation
                 do{
                     System.out.println("Enter number of assists for " + tempName);
+                    //detect rather input is int or not.
                     while (!sc.hasNextInt()) {
                         System.out.println("Input need to be a number!");
                         System.out.println("Enter number of assist for " + tempName);
@@ -70,8 +76,10 @@ public class Main {
                     if(tempAssist < 0){ System.out.println("Assist need to be positive number");}
                 }while(tempAssist < 0);
 
+                //store new player into player object
                 playerArray[p] = new Player(tempName,tempGoal,tempAssist);
             }
+            //store player array into team object
             teamsArray[i].setPlayers(playerArray);
         }
 

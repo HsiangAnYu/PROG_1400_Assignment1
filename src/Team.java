@@ -1,8 +1,8 @@
 public class Team {
     //all variable
-    private String name = "";
+    private final String name;
     private String stars;
-    private double budget = Math.random()*100000;
+    private final double budget = Math.random()*100000;
     private Player[] players = new Player[3];
 
     //getter

@@ -1,6 +1,8 @@
 public class Player {
     //all variable
-    private String name;
+    private final String name;
+    private final int goals;
+    private final int assists;
 
     //getter, don't need setter for player class
     public String getName() {return name;}
@@ -8,9 +10,6 @@ public class Player {
     public int getGoals() {return goals;}
 
     public int getAssists() {return assists;}
-
-    private int goals;
-    private int assists;
 
     //constructor
     protected Player(String name, int goals, int assists){
