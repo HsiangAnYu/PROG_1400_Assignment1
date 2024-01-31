@@ -20,7 +20,7 @@ public class Main {
         {
             System.out.println("Enter name for team # " + (i+1) + ":");
             teamsArray[i] = new Team(sc.next());
-            if(teamsArray[i].name.length() < 3)
+            if(teamsArray[i].getName().length() < 3)
             {
                 System.out.println("Name need at least 3 characters");
                 i --;
@@ -37,7 +37,7 @@ public class Main {
             int tempGoal;
             int tempAssist;
 
-            System.out.println("Enter players for "+ teamsArray[i].name +" Picks:");
+            System.out.println("Enter players for "+ teamsArray[i].getName() +" Picks:");
 
             for(int p = 0; p < playerArray.length; p++)
             {
@@ -49,6 +49,7 @@ public class Main {
 
                 do{
                     System.out.println("Enter number of goals for " + tempName);
+                    //
                     while (!sc.hasNextInt()) {
                         System.out.println("Input need to be a number!");
                         System.out.println("Enter number of goals for " + tempName);
@@ -71,10 +72,8 @@ public class Main {
 
                 playerArray[p] = new Player(tempName,tempGoal,tempAssist);
             }
-            teamsArray[i].players = playerArray;
+            teamsArray[i].setPlayers(playerArray);
         }
-
-        System.out.println(teamsArray[1].players[1].name + teamsArray[1].players[1].goals + teamsArray[1].players[1].assists);
 
     }
 }
