@@ -44,16 +44,29 @@ public class Main {
                 do{
                     System.out.println("Enter name for player # " + (p+1) +":");
                     tempName = sc.next();
+                    if(tempName.length() < 3){ System.out.println("Name need at least 3 characters");}
                 }while(tempName.length() < 3);
 
                 do{
                     System.out.println("Enter number of goals for " + tempName);
+                    while (!sc.hasNextInt()) {
+                        System.out.println("Input need to be a number!");
+                        System.out.println("Enter number of goals for " + tempName);
+                        sc.next();
+                    }
                     tempGoal = sc.nextInt();
+                    if(tempGoal < 0){ System.out.println("Goal need to be positive number");}
                 }while(tempGoal < 0);
 
                 do{
                     System.out.println("Enter number of assists for " + tempName);
+                    while (!sc.hasNextInt()) {
+                        System.out.println("Input need to be a number!");
+                        System.out.println("Enter number of assist for " + tempName);
+                        sc.next();
+                    }
                     tempAssist = sc.nextInt();
+                    if(tempAssist < 0){ System.out.println("Assist need to be positive number");}
                 }while(tempAssist < 0);
 
                 playerArray[p] = new Player(tempName,tempGoal,tempAssist);
