@@ -81,7 +81,24 @@ public class Main {
             }
             //store player array into team object
             teamsArray[i].setPlayers(playerArray);
+        }//end loop for player input
+
+        //display info
+        System.out.println("\nREPORT: Stats per Team");
+        System.out.println("================================");
+
+        //output team data
+        for(Team t : teamsArray)
+        {
+            System.out.print(t.getName() + ":");
+            System.out.print(" Goals- " + t.totalGoals());
+            System.out.print(" Assists- " + t.totalAssists());
+            System.out.println(" Total- " + t.totalPoints());
+            System.out.println("Budget- $" + String.format("%,.2f", t.getBudget())); // to 2 decimal place
+            System.out.println("Rating: " + t.rating(t.totalPoints()));
         }
 
-    }
-}
+
+
+    }//end method main
+}//end class main

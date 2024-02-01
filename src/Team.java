@@ -1,22 +1,17 @@
 public class Team {
     //all variable
     private final String name;
-    private String stars;
     private final double budget = Math.random()*100000;
     private Player[] players = new Player[3];
 
     //getter
     public String getName() {return name;}
 
-    public String getStars() {return stars;}
-
     public double getBudget() {return budget;}
 
     public Player[] getPlayers() {return players;}
 
-    //setter, only need stars and players
-    public void setStars(String stars) {this.stars = stars;}
-
+    //setter, only need players
     public void setPlayers(Player[] players) {this.players = players;}
 
     //constructor
@@ -43,7 +38,7 @@ public class Team {
     }
 
     //method for cal total goals + assists
-    protected  int totalPoints(){
+    protected int totalPoints(){
         int totals = 0;
         for(Player p : players)
         {totals += p.totalPoint();};
@@ -51,4 +46,11 @@ public class Team {
         return totals;
     }
 
+    //method for cal rating stars
+    protected String rating(int totalPoints){
+        if(totalPoints > 20){return "3* stars";}
+        else if (totalPoints > 10){return "2* stars";}
+        else if(totalPoints > 0){return "1* star";}
+        else{return "0 star";}
+    }
 }
