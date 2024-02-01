@@ -98,6 +98,23 @@ public class Main {
             System.out.println("Rating: " + t.rating(t.totalPoints()));
         }
 
+        //display info
+        System.out.println("\nREPORT: Stats per Player");
+        System.out.println("================================");
+
+        //output player data
+        for(Team t : teamsArray)
+        {
+            System.out.println(t.getName());
+            for(Player p : playerArray)
+            {
+                System.out.print(p.getName() + ":");
+                System.out.print(" Goals- " + p.getGoals());
+                System.out.print(" Assists- " + p.getAssists());
+                System.out.println(" Total- " + p.totalPoint());
+            }
+            System.out.println();
+        }
 
 
     }//end method main

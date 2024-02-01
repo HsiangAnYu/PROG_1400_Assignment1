@@ -1,7 +1,7 @@
 public class Team {
     //all variable
     private final String name;
-    private final double budget = Math.random()*100000;
+    private final double budget = Math.random()*100000; // the rubric say between 0 ~ 100000, so I didn't plus 1
     private Player[] players = new Player[3];
 
     //getter
