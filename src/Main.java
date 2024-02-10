@@ -7,8 +7,8 @@ public class Main {
     public static void main(String[] args) {
         //declare useful object first
         Scanner sc = new Scanner(System.in);
-        Team[] teamsArray = new Team[3];
-        Player[] playerArray = new Player[3];
+        final int teamNum = 3;
+        Team[] teamsArray = new Team[teamNum];
 
         //display intro
         System.out.println("FANTASY HOCKEY APPLICATION");
@@ -33,25 +33,25 @@ public class Main {
         System.out.println("================================");
 
         //loop for player data input
-        for(int i = 0; i < teamsArray.length; i++)
-        {   //temp variable for player class
+        for (Team team : teamsArray) {   //temp variable for player class
             String tempName;
             int tempGoal;
             int tempAssist;
 
-            System.out.println("Enter players for "+ teamsArray[i].getName() +" Picks:");
+            System.out.println("Enter players for " + team.getName());
 
-            for(int p = 0; p < playerArray.length; p++)
-            {
+            for (int p = 0; p < team.getPlayerNum(); p++) {
                 //store player name with validation
-                do{
-                    System.out.println("Enter name for player # " + (p+1) +":");
+                do {
+                    System.out.println("Enter name for player # " + (p + 1) + ":");
                     tempName = sc.next();
-                    if(tempName.length() < 3){ System.out.println("Name need at least 3 characters");}
-                }while(tempName.length() < 3);
+                    if (tempName.length() < 3) {
+                        System.out.println("Name need at least 3 characters");
+                    }
+                } while (tempName.length() < 3); //check if string length is larger than 3
 
                 //store player goals with validation
-                do{
+                do {
                     System.out.println("Enter number of goals for " + tempName);
                     //detect rather input is int or not.
                     while (!sc.hasNextInt()) {
@@ -60,11 +60,13 @@ public class Main {
                         sc.next();
                     }
                     tempGoal = sc.nextInt();
-                    if(tempGoal < 0){ System.out.println("Goal need to be positive number");}
-                }while(tempGoal < 0);
+                    if (tempGoal < 0) {
+                        System.out.println("Goal need to be positive number");
+                    }
+                } while (tempGoal < 0); //check if input is positive
 
                 //store player assist with validation
-                do{
+                do {
                     System.out.println("Enter number of assists for " + tempName);
                     //detect rather input is int or not.
                     while (!sc.hasNextInt()) {
@@ -73,14 +75,14 @@ public class Main {
                         sc.next();
                     }
                     tempAssist = sc.nextInt();
-                    if(tempAssist < 0){ System.out.println("Assist need to be positive number");}
-                }while(tempAssist < 0);
+                    if (tempAssist < 0) {
+                        System.out.println("Assist need to be positive number");
+                    }
+                } while (tempAssist < 0); //check if input is positive
 
-                //store new player into player object
-                playerArray[p] = new Player(tempName,tempGoal,tempAssist);
+                //store new player into team object
+                team.setPlayers(new Player(tempName, tempGoal, tempAssist), p);
             }
-            //store player array into team object
-            teamsArray[i].setPlayers(playerArray);
         }//end loop for player input
 
         //display info
@@ -94,8 +96,9 @@ public class Main {
             System.out.print(" Goals- " + t.totalGoals());
             System.out.print(" Assists- " + t.totalAssists());
             System.out.println(" Total- " + t.totalPoints());
-            System.out.println("Budget- $" + String.format("%,.2f", t.getBudget())); // to 2 decimal place
+            System.out.println("Budget: $" + String.format("%,.2f", t.getBudget())); // to 2 decimal place
             System.out.println("Rating: " + t.rating(t.totalPoints()));
+            System.out.println();
         }
 
         //display info
@@ -106,16 +109,15 @@ public class Main {
         for(Team t : teamsArray)
         {
             System.out.println(t.getName());
-            for(Player p : playerArray)
+            for(Player p : t.getPlayers())
             {
                 System.out.print(p.getName() + ":");
-                System.out.print(" Goals- " + p.getGoals());
-                System.out.print(" Assists- " + p.getAssists());
-                System.out.println(" Total- " + p.totalPoint());
+                System.out.print(" Goals-" + p.getGoals());
+                System.out.print(" Assists-" + p.getAssists());
+                System.out.println(" Total-" + p.totalPoint());
             }
             System.out.println();
         }
-
 
     }//end method main
 }//end class main
